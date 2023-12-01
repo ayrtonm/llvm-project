@@ -277,3 +277,15 @@ def PPCE500Model : SchedMachineModel {
 
   let Itineraries = PPCE500Itineraries;
 }
+
+let SchedModel = PPCE500Model in {
+
+def E500UnitSU : ProcResource<2>;
+def E500UnitBU : ProcResource<1>;
+def E500UnitMU : ProcResource<1>;
+def E500UnitLSU : ProcResource<1>;
+
+// Write an integer register.
+def E500WriteI : SchedWriteRes<[E500UnitSU]>;
+
+} // SchedModel = PPCE500Model
